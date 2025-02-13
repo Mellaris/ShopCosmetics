@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|c:\\users\\notebook\\desktop\\cosmetics\\cosmetics\\startwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|solutionrelative:cosmetics\\startwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|c:\\users\\notebook\\desktop\\cosmetics\\cosmetics\\startwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|solutionrelative:cosmetics\\startwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|c:\\users\\notebook\\desktop\\cosmetics\\cosmetics\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|solutionrelative:cosmetics\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|c:\\users\\notebook\\desktop\\cosmetics\\cosmetics\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|solutionrelative:cosmetics\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|c:\\users\\notebook\\desktop\\cosmetics\\cosmetics\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "RelativeMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|solutionrelative:cosmetics\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|c:\\users\\notebook\\desktop\\cosmetics\\cosmetics\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9214A88-2173-4FB7-BA83-BF478B1F5952}|Cosmetics\\Cosmetics.csproj|solutionrelative:cosmetics\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Cosmetics\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\Models\\Product.cs",
+              "RelativeToolTip": "Cosmetics\\Models\\Product.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA3wB0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T10:47:01.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Cosmetics\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\Models\\User.cs",
+              "RelativeToolTip": "Cosmetics\\Models\\User.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T10:14:20.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StartWindow.axaml",
+              "DocumentMoniker": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\StartWindow.axaml",
+              "RelativeDocumentMoniker": "Cosmetics\\StartWindow.axaml",
+              "ToolTip": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\StartWindow.axaml",
+              "RelativeToolTip": "Cosmetics\\StartWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-13T10:12:22.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StartWindow.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\StartWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Cosmetics\\StartWindow.axaml.cs",
+              "ToolTip": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\StartWindow.axaml.cs",
+              "RelativeToolTip": "Cosmetics\\StartWindow.axaml.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAgwEkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T10:12:22.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.axaml",
+              "DocumentMoniker": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\MainWindow.axaml",
+              "RelativeDocumentMoniker": "Cosmetics\\MainWindow.axaml",
+              "ToolTip": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\MainWindow.axaml",
+              "RelativeToolTip": "Cosmetics\\MainWindow.axaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-13T09:31:01.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\MainWindow.axaml.cs",
+              "RelativeDocumentMoniker": "Cosmetics\\MainWindow.axaml.cs",
+              "ToolTip": "C:\\Users\\Notebook\\Desktop\\Cosmetics\\Cosmetics\\MainWindow.axaml.cs",
+              "RelativeToolTip": "Cosmetics\\MainWindow.axaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAiwCQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T09:30:56.996Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

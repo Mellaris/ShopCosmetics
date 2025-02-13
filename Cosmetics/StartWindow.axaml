@@ -1,0 +1,59 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
+        x:Class="Cosmetics.StartWindow"
+		x:CompileBindings="False"
+        Title="StartWindow">
+	<StackPanel>
+		<TextBlock Name="UserFullName" HorizontalAlignment="Right"/>
+		<Button Content="Выйти" Name="LogoutButton" Click="OnLogoutClicked" HorizontalAlignment="Right"/>
+
+		<StackPanel>
+			<TextBlock Text="Доступные функции:" FontWeight="Bold"/>
+			<StackPanel Name="ClientPanel" IsVisible="False">
+				<TextBlock Text="Просмотр товаров"/>
+				<TextBlock Text="Создание заказа"/>
+			</StackPanel>
+			<StackPanel Name="ManagerPanel" IsVisible="False">
+				<TextBlock Text="Просмотр товаров"/>
+				<TextBlock Text="Создание и редактирование заказов"/>
+			</StackPanel>
+			<StackPanel Name="AdminPanel" IsVisible="False">
+				<TextBlock Text="Формирование, просмотр и редактирование заказов"/>
+				<TextBlock Text="Добавление, редактирование и удаление товаров"/>
+			</StackPanel>
+		</StackPanel>
+
+            <TextBox Name="SearchBox" Width="200" Watermark="Поиск..." TextChanged="TextBox_TextChanged"/>
+            <ComboBox Name="DiscountFilter" SelectionChanged="OnFilterChanged" Width="150">
+                <ComboBoxItem Content="Все диапазоны"/>
+                <ComboBoxItem Content="0-9,99%"/>
+                <ComboBoxItem Content="10-14,99%"/>
+                <ComboBoxItem Content="15% и более"/>
+            </ComboBox>
+            <ComboBox Name="SortOrder" SelectionChanged="ComboBox_SelectionChanged" Width="150">
+                <ComboBoxItem Content="По стоимости (возрастание)"/>
+                <ComboBoxItem Content="По стоимости (убывание)"/>
+            </ComboBox>
+		
+		<ListBox Width="400" Height="300" Name="ProductList">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border Padding="5" Background="{Binding DiscountColor}">
+						<StackPanel>
+							<TextBlock Text="{Binding ProductName}" FontWeight="Bold"/>
+							<TextBlock Text="{Binding ProductDescription}" FontStyle="Italic"/>
+							<TextBlock Text="{Binding ManufacturerName}"/>
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="{Binding FormattedPrice}"/>
+							</StackPanel>
+							<TextBlock Text="{Binding DiscountText}" FontWeight="Bold"/>
+						</StackPanel>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</StackPanel>
+</Window>
