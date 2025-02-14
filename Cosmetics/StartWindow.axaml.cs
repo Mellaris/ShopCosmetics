@@ -16,7 +16,8 @@ public partial class StartWindow : Window
 {
     private User _currentUser;
     private readonly User9Context _context;
-    private List<Product> _allProducts = new List<Product>();
+    public List<ProductViewModel> _allProducts = new List<ProductViewModel>();
+    private List<OrderItem> _currentOrder = new List<OrderItem>();
     public StartWindow()
     {
         InitializeComponent();
@@ -64,48 +65,102 @@ public partial class StartWindow : Window
                     : $"{p.Productcost:0.00} ₽"
             })
             .ToList();
+
         ProductList.ItemsSource = products;
+
+        _allProducts = _context.Products
+        .Include(p => p.Productmanufacturer)
+        .Select(p => new ProductViewModel
+        {
+            ProductName = p.Productname,
+            ProductDescription = p.Productdescription,
+            ManufacturerName = p.Productmanufacturer.Manufacturername,
+            Price = p.Productcost,
+            Discount = p.Productdiscountamount,
+            FinalPrice = p.Productdiscountamount.HasValue && p.Productdiscountamount > 0
+    ? Math.Round(p.Productcost * (1 - (decimal)p.Productdiscountamount / 100), 2) // Округляем до 2 знаков
+    : p.Productcost,
+            DiscountText = p.Productdiscountamount.HasValue ? $"{p.Productdiscountamount}% скидка" : "Без скидки",
+            DiscountColor = (p.Productdiscountamount.HasValue && p.Productdiscountamount > 15) ? "#7FFF00" : "Transparent",
+            FormattedPrice = p.Productdiscountamount.HasValue && p.Productdiscountamount > 0
+                ? $"{p.Productcost - (p.Productcost * (decimal)p.Productdiscountamount / 100):0.00} ₽ ( ~{p.Productcost:0.00} ₽~ )"
+                : $"{p.Productcost:0.00} ₽"
+        })
+        .ToList();
         
         ApplyFilters();
     }
+    private void OnAddToOrderClicked(object sender, RoutedEventArgs e)
+    {
+        var selectedProduct = ProductList.SelectedItem as Product; // Приводим тип, если возможно
+
+        if (ProductList.SelectedItem != null) // Проверяем, что выбран продукт
+        {
+            // Проверяем, существует ли уже такой товар в заказе
+            var existingItem = _currentOrder.FirstOrDefault(item => item.Product.Productarticlenumber == selectedProduct.Productarticlenumber);
+
+            if (existingItem != null)
+            {
+                // Если товар уже в заказе, увеличиваем количество
+                existingItem.Quantity++;
+            }
+            else
+            {
+                // Если товара нет в заказе, добавляем новый товар
+                _currentOrder.Add(new OrderItem { Product = selectedProduct, Quantity = 1 });
+            }
+
+            // Обновляем видимость кнопки для просмотра заказа
+            ViewOrderButton.IsVisible = _currentOrder.Any();
+        }
+        ViewOrderButton.IsVisible = _currentOrder.Any();
+    }
+    private async void OnViewOrderClicked(object sender, RoutedEventArgs e)
+    {
+        var orderWindow = new OrderWindow(_currentOrder);
+        await orderWindow.ShowDialog(this);
+    }
     private void ApplyFilters()
     {
-        
-        var filteredProducts = _allProducts.AsQueryable();
+        var filteredProducts = _allProducts.AsEnumerable();
+        int count = _allProducts.Count;
+        // Фильтрация по скидке
+        if (DiscountFilter.SelectedIndex > 0)
+        {
+            switch (DiscountFilter.SelectedIndex)
+            {
+                case 1:
+                    filteredProducts = filteredProducts.Where(p => p.Discount is >= 0 and < 10);
+                    break;
+                case 2:
+                    filteredProducts = filteredProducts.Where(p => p.Discount is >= 10 and < 15);
+                    break;
+                case 3:
+                    filteredProducts = filteredProducts.Where(p => p.Discount >= 15);
+                    break;
+            }
+        }
 
-        // Фильтрация по поиску
+        // Поиск по названию
         if (!string.IsNullOrWhiteSpace(SearchBox.Text))
         {
             string searchText = SearchBox.Text.ToLower();
             filteredProducts = filteredProducts.Where(p => p.ProductName.ToLower().Contains(searchText));
-            ProductList.ItemsSource = filteredProducts.ToList();
         }
 
-        // Фильтрация по скидке
-        if (DiscountFilter.SelectedIndex > 0)
-        {
-            filteredProducts = DiscountFilter.SelectedIndex switch
-            {
-                1 => filteredProducts.Where(p => p.Discount >= 0 && p.Discount < 10),
-                2 => filteredProducts.Where(p => p.Discount >= 10 && p.Discount < 15),
-                3 => filteredProducts.Where(p => p.Discount >= 15),
-                _ => filteredProducts
-            };
-            ProductList.ItemsSource = filteredProducts.ToList();
-        }
-        // Сортировка по цене
+        // Сортировка по цене (учитываем FinalPrice)
         if (SortOrder.SelectedIndex == 0)
         {
-            filteredProducts = filteredProducts.OrderBy(p => p.Price);
-            ProductList.ItemsSource = filteredProducts.ToList();
+            filteredProducts = filteredProducts.OrderBy(p => p.FinalPrice);
         }
         else if (SortOrder.SelectedIndex == 1)
         {
-            filteredProducts = filteredProducts.OrderByDescending(p => p.Price);
-            ProductList.ItemsSource = filteredProducts.ToList();
+            filteredProducts = filteredProducts.OrderByDescending(p => p.FinalPrice);
         }
 
-       
+        ProductCountText.Text = $"{filteredProducts.Count()} из {count}";
+        // Обновляем отображение списка
+        ProductList.ItemsSource = filteredProducts.ToList();
     }
     private void OnFilterChanged(object sender, Avalonia.Controls.SelectionChangedEventArgs e)
     {
@@ -127,4 +182,21 @@ public partial class StartWindow : Window
     {
         ApplyFilters();
     }
+}
+public class ProductViewModel
+{
+    public string ProductName { get; set; }
+    public string ProductDescription { get; set; }
+    public string ManufacturerName { get; set; }
+    public decimal Price { get; set; }
+    public short? Discount { get; set; }
+    public string DiscountText { get; set; }
+    public string DiscountColor { get; set; }
+    public string FormattedPrice { get; set; }
+    public decimal FinalPrice { get; set; } // Итоговая цена после скидки
+}
+public class OrderItem
+{
+    public Product Product { get; set; }
+    public int Quantity { get; set; }
 }
